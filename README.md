@@ -1,2 +1,36 @@
-# vecf32
-Package vecf32 provides common functions and methods for slices of float32
+# vecf32  [![GoDoc](https://godoc.org/github.com/chewxy/vecf32?status.svg)](https://godoc.org/github.com/chewxy/vecf32) [![Build Status](https://travis-ci.org/chewxy/vecf32.svg?branch=master)](https://travis-ci.org/chewxy/vecf32) [![Coverage Status](https://coveralls.io/repos/github/chewxy/vecf32/badge.svg?branch=master)](https://coveralls.io/github/chewxy/vecf32?branch=master)
+
+Package vecf32 provides common functions and methods for slices of float64
+
+# Installation
+
+`go get -u github.com/chewxy/vecf32`
+
+## Dependencies
+
+This package [math32](https://github.com/chewxy/math32). For testing this package uses [testify/assert](https://github.com/stretchr/testify), which is licenced with a [MIT/BSD-like licence](https://github.com/stretchr/testify/blob/master/LICENSE)
+
+# Build Tags
+
+The point of this package is to provide operations that are accelerated by SIMD. However, this pakcage by default does not use SIMD. To use SIMD, build tags must be used. The supported build tags are `sse` and `avx`. Here's an example on how to use them:
+
+* [SSE](https://en.wikipedia.org/wiki/Streaming_SIMD_Extensions) - `go build -tags='sse' ...
+* [AVX](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions) - `go build -tags='avx' ...
+
+# Contributing
+
+Contributions are welcome. The typical process works like this:
+
+1. File an issue  on the topic you want to contribute
+2. Fork this repo
+3. Add your contribution
+4. Make a pull request
+5. The pull request will be merged once tests pass, and code reviewed.
+
+## Pull Requests
+
+This package is very well tested. Please ensure tests are written if any new features are added. If bugs are fixed, please add the bugs to the tests as well.
+
+# Licence
+
+Package vecf32 is licenced under the MIT licence.
