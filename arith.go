@@ -2,7 +2,8 @@ package vecf32
 
 import "github.com/chewxy/math32"
 
-// Pow performs  a̅ ^ b̅ elementwise
+// Pow performs  elementwise
+//		a̅ ^ b̅
 func Pow(a, b []float32) {
 	for i, v := range a {
 		switch b[i] {
@@ -20,43 +21,49 @@ func Pow(a, b []float32) {
 	}
 }
 
-// TODO:Vectorize
+// Scale multiplies all values in the slice by the scalar. It performs elementwise
+// 		s * a̅
 func Scale(s float32, a []float32) {
 	for i, v := range a {
 		a[i] = v * s
 	}
 }
 
-/// DivBy divides all numbers in the slice by a scalar
-func DivBy(s float32, a []float32) {
+// DivR divides all numbers in the slice by a scalar. It performs elementwise
+// 		s/a̅
+func DivR(s float32, a []float32) {
 	for i, v := range a {
 		a[i] = s / v
 	}
 }
 
-// Trans translates all thee numbers in the slice by a scalar (slice + scalar)
+// Trans adds all the values in the slice by a scalar
+// 		s + a̅
 func Trans(s float32, a []float32) {
 	for i, v := range a {
 		a[i] = v + s
 	}
 }
 
-// TransFrom translates all the numbers in a slice from a scalar (scalar - slice)
-func TransFrom(s float32, a []float32) {
+// TransR subtracts all the numbers in a slice from a scalar
+//	 s - a̅
+func TransR(s float32, a []float32) {
 	for i, v := range a {
 		a[i] = s - v
 	}
 }
 
-// Power performs a^s elementwise
-func Power(s float32, a []float32) {
+// PowOf performs elementwise
+//		a̅ ^ s
+func PowOf(s float32, a []float32) {
 	for i, v := range a {
 		a[i] = math32.Pow(v, s)
 	}
 }
 
-// PowerFrom performs s^a eleemntwise
-func PowerFrom(s float32, a []float32) {
+// PowOfR performs elementwise
+//		s ^ a̅
+func PowOfR(s float32, a []float32) {
 	for i, v := range a {
 		a[i] = math32.Pow(s, v)
 	}
