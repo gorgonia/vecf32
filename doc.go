@@ -26,16 +26,15 @@
 //
 // Operations between []float32 and float32 are also supported, however they are differently named. Here are the equivalents:
 /*
-	+------------------------+--------------------------------------+
-	| []float32-[]float32 Op |         []float32-float32 Op         |
-	+------------------------+--------------------------------------+
-	| Add(a, b []float32)    | Trans(a float32, b []float32)        |
-	| Sub(a, b []float32)    | Trans/TransR(a float32, b []float32) |
-	| Mul(a, b []float32)    | Scale(a float32, b []float32)        |
-	| Div(a, b []float32)    | Scale/DivR(a float32, b []float32)   |
-	| Pow(a, b []float32)    | PowOf/PowOfR(a float32, b []float32) |
-	+------------------------+--------------------------------------+
+	+------------------------+--------------------------------------------+
+	| []float32-[]float32 Op |         []float32-float32 Op               |
+	+------------------------+--------------------------------------------+
+	| Add(a, b []float32)    | Trans(a float32, b []float32)              |
+	| Sub(a, b []float32)    | TransInv/TransInvR(a float32, b []float32) |
+	| Mul(a, b []float32)    | Scale(a float32, b []float32)              |
+	| Div(a, b []float32)    | ScaleInv/ScaleInvR(a float32, b []float32) |
+	| Pow(a, b []float32)    | PowOf/PowOfR(a float32, b []float32)       |
+	+------------------------+--------------------------------------------+
 */
-// You may note that for the []float32 - float32 binary operations, the scalar (float32) is always the first operand. In operations
-// that are not commutative, an additional function is provided, suffixed with "R" (for reverse)
+// Suffixes of "-Inv" indicates it's the inverse function. Suffixes of "-R"  indicates that the operands are reversed.
 package vecf32

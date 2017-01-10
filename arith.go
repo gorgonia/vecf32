@@ -22,32 +22,44 @@ func Pow(a, b []float32) {
 }
 
 // Scale multiplies all values in the slice by the scalar. It performs elementwise
-// 		s * a̅
-func Scale(s float32, a []float32) {
+// 		a̅ * s
+func Scale(a []float32, s float32) {
 	for i, v := range a {
 		a[i] = v * s
 	}
 }
 
-// DivR divides all numbers in the slice by a scalar. It performs elementwise
-// 		s/a̅
-func DivR(s float32, a []float32) {
+// ScaleInv divides all values in the slice by the scalar. It performs elementwise
+// 		a̅ / s
+func ScaleInv(a []float32, s float32) {
+	Scale(a, 1/s)
+}
+
+/// ScaleInvR divides all numbers in the slice by a scalar
+// 		s / a̅
+func ScaleInvR(a []float32, s float32) {
 	for i, v := range a {
 		a[i] = s / v
 	}
 }
 
 // Trans adds all the values in the slice by a scalar
-// 		s + a̅
-func Trans(s float32, a []float32) {
+// 		a̅ + s
+func Trans(a []float32, s float32) {
 	for i, v := range a {
 		a[i] = v + s
 	}
 }
 
-// TransR subtracts all the numbers in a slice from a scalar
+// TransInv subtracts all the values in the slice by a scalar
+//		a̅ - s
+func TransInv(a []float32, s float32) {
+	Trans(a, -s)
+}
+
+// TransInvR subtracts all the numbers in a slice from a scalar
 //	 s - a̅
-func TransR(s float32, a []float32) {
+func TransInvR(a []float32, s float32) {
 	for i, v := range a {
 		a[i] = s - v
 	}
@@ -55,7 +67,7 @@ func TransR(s float32, a []float32) {
 
 // PowOf performs elementwise
 //		a̅ ^ s
-func PowOf(s float32, a []float32) {
+func PowOf(a []float32, s float32) {
 	for i, v := range a {
 		a[i] = math32.Pow(v, s)
 	}
@@ -63,13 +75,13 @@ func PowOf(s float32, a []float32) {
 
 // PowOfR performs elementwise
 //		s ^ a̅
-func PowOfR(s float32, a []float32) {
+func PowOfR(a []float32, s float32) {
 	for i, v := range a {
 		a[i] = math32.Pow(s, v)
 	}
 }
 
-// Max takes two slices, and compares them elementwise. The highest value is put into a
+// Max takes two slices, a̅ + b̅, and compares them elementwise. The highest value is put into a̅.
 func Max(a, b []float32) {
 	if len(a) != len(b) {
 		panic("Index error")
@@ -86,7 +98,7 @@ func Max(a, b []float32) {
 	}
 }
 
-// Max takes two slices, and compares them elementwise. The lowest value is put into a
+// Min takes two slices, a̅ + b̅ and compares them elementwise. The lowest value is put into a̅.
 func Min(a, b []float32) {
 	if len(a) != len(b) {
 		panic("Index error")
