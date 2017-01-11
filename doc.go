@@ -1,4 +1,4 @@
-// Package vecf32 provides common functions and methods for slices of float32
+// Package vecf32 provides common functions and methods for slices of float32.
 //
 // Name
 //
@@ -36,5 +36,13 @@
 	| Pow(a, b []float32)    | PowOf/PowOfR(a float32, b []float32)       |
 	+------------------------+--------------------------------------------+
 */
-// Suffixes of "-Inv" indicates it's the inverse function. Suffixes of "-R"  indicates that the operands are reversed.
+// You may note that for the []float64 - float64 binary operations, the scalar (float64) is always the first operand. In operations
+// that are not commutative, an additional function is provided, suffixed with "R" (for reverse)
+//
+// Range Check and BCE
+//
+// This package does not provide range checking. If indices are out of range, the functions will panic. This package should play well with BCE.
+//
+// TODO(anyone): provide SIMD vectorization for Incr and []float32-float64 functions
+// Pull requests accepted
 package vecf32
