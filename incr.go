@@ -1,6 +1,6 @@
-package vecf64
+package vecf32
 
-import "math32"
+import "github.com/chewxy/math32"
 
 // IncrAdd performs a̅ + b̅ and then adds it elementwise to the incr slice
 func IncrAdd(a, b, incr []float32) {

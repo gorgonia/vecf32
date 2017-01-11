@@ -1,9 +1,9 @@
-package vecf64
+package vecf32
 
 import (
-	"math32"
 	"testing"
 
+	"github.com/chewxy/math32"
 	"github.com/stretchr/testify/assert"
 )
 
