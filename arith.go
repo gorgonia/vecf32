@@ -23,6 +23,14 @@ func Pow(a, b []float32) {
 	}
 }
 
+func Mod(a, b []float32) {
+	a = a[:len(a)]
+	b = b[:len(a)]
+	for i, v := range a {
+		a[i] = math32.Mod(v, b[i])
+	}
+}
+
 // Scale multiplies all values in the slice by the scalar. It performs elementwise
 // 		a̅ * s
 func Scale(a []float32, s float32) {
