@@ -1,6 +1,6 @@
 # vecf32  [![GoDoc](https://godoc.org/github.com/chewxy/vecf32?status.svg)](https://godoc.org/github.com/chewxy/vecf32) [![Build Status](https://travis-ci.org/chewxy/vecf32.svg?branch=master)](https://travis-ci.org/chewxy/vecf32) [![Coverage Status](https://coveralls.io/repos/github/chewxy/vecf32/badge.svg?branch=master)](https://coveralls.io/github/chewxy/vecf32?branch=master)
 
-Package vecf32 provides common functions and methods for slices of float64
+Package vecf32 provides common functions and methods for slices of float32
 
 # Installation
 
