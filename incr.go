@@ -45,7 +45,7 @@ func IncrDiv(a, b, incr []float32) {
 	}
 }
 
-// IncrDiv performs a̅ ÷ b̅. a̅ will be clobbered
+// IncrDiv performs a̅ ÷ b̅. then adds it to incr
 func IncrPow(a, b, incr []float32) {
 	a = a[:len(a)]
 	b = b[:len(a)]
@@ -63,6 +63,17 @@ func IncrPow(a, b, incr []float32) {
 		default:
 			incr[i] += math32.Pow(v, b[i])
 		}
+	}
+}
+
+// IncrMod performs a̅ % b̅ then adds it to incr
+func IncrMod(a, b, incr []float32) {
+	a = a[:len(a)]
+	b = b[:len(a)]
+	incr = incr[:len(a)]
+
+	for i, v := range a {
+		incr[i] += math32.Mod(v, b[i])
 	}
 }
 
