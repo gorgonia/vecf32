@@ -45,4 +45,4 @@
 //
 // TODO(anyone): provide SIMD vectorization for Incr and []float32-float64 functions
 // Pull requests accepted
-package vecf32
+package vecf32 // import "gorgonia.org/vecf32"
