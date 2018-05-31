@@ -19,8 +19,8 @@ The point of this package is to provide operations that are accelerated by SIMD.
 
 # FAQ
 
-### Why are there so many `a = a[:len(a)]` lines?
-This is mainly done to eliminate bounds checking in a loop. The idea is the bounds of the slice is checked early on, and if need be, panics early. Then if everything is normal, there won't be bounds checking while in the loop.
+### Why are there so many `b = b[:len(a)]` lines?
+This is mainly done to eliminate bounds checking in a loop. The idea is the bounds of the slice is checked early on, and if need be, panics early. Then if everything is normal, there won't be bounds checking while in the loop. This also means that `b` must be at least `len(a)`, otherwise a panic will occur.
 
 To check for boundschecking and bounds check elimination (an amazing feature that landed in Go 1.7), compile your programs with `-gcflags='-d=ssa/check_bce/debug=1'`. 
 
