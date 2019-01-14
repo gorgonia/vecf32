@@ -5,7 +5,6 @@ import "github.com/chewxy/math32"
 // Pow performs  elementwise
 //		a̅ ^ b̅
 func Pow(a, b []float32) {
-	a = a[:len(a)]
 	b = b[:len(a)]
 	for i, v := range a {
 		switch b[i] {
@@ -24,7 +23,6 @@ func Pow(a, b []float32) {
 }
 
 func Mod(a, b []float32) {
-	a = a[:len(a)]
 	b = b[:len(a)]
 	for i, v := range a {
 		a[i] = math32.Mod(v, b[i])
@@ -93,7 +91,6 @@ func PowOfR(a []float32, s float32) {
 
 // Max takes two slices, a̅ + b̅, and compares them elementwise. The highest value is put into a̅.
 func Max(a, b []float32) {
-	a = a[:len(a)]
 	b = b[:len(a)]
 
 	for i, v := range a {
@@ -106,7 +103,6 @@ func Max(a, b []float32) {
 
 // Min takes two slices, a̅ + b̅ and compares them elementwise. The lowest value is put into a̅.
 func Min(a, b []float32) {
-	a = a[:len(a)]
 	b = b[:len(a)]
 
 	for i, v := range a {

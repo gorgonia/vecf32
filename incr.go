@@ -4,7 +4,6 @@ import "github.com/chewxy/math32"
 
 // IncrAdd performs a̅ + b̅ and then adds it elementwise to the incr slice
 func IncrAdd(a, b, incr []float32) {
-	a = a[:len(a)]
 	b = b[:len(a)]
 	incr = incr[:len(a)]
 	for i, v := range a {
@@ -14,7 +13,6 @@ func IncrAdd(a, b, incr []float32) {
 
 // IncrSub performs a̅ = b̅ and then adds it elementwise to the incr slice
 func IncrSub(a, b, incr []float32) {
-	a = a[:len(a)]
 	b = b[:len(a)]
 	incr = incr[:len(a)]
 	for i, v := range a {
@@ -24,7 +22,6 @@ func IncrSub(a, b, incr []float32) {
 
 // IncrMul performs a̅ × b̅ and then adds it elementwise to the incr slice
 func IncrMul(a, b, incr []float32) {
-	a = a[:len(a)]
 	b = b[:len(a)]
 	incr = incr[:len(a)]
 	for i, v := range a {
@@ -33,7 +30,6 @@ func IncrMul(a, b, incr []float32) {
 }
 
 func IncrDiv(a, b, incr []float32) {
-	a = a[:len(a)]
 	b = b[:len(a)]
 	incr = incr[:len(a)]
 	for i, v := range a {
@@ -47,7 +43,6 @@ func IncrDiv(a, b, incr []float32) {
 
 // IncrDiv performs a̅ ÷ b̅. then adds it to incr
 func IncrPow(a, b, incr []float32) {
-	a = a[:len(a)]
 	b = b[:len(a)]
 	incr = incr[:len(a)]
 	for i, v := range a {
@@ -68,7 +63,6 @@ func IncrPow(a, b, incr []float32) {
 
 // IncrMod performs a̅ % b̅ then adds it to incr
 func IncrMod(a, b, incr []float32) {
-	a = a[:len(a)]
 	b = b[:len(a)]
 	incr = incr[:len(a)]
 
@@ -80,7 +74,6 @@ func IncrMod(a, b, incr []float32) {
 // Scale multiplies all values in the slice by the scalar and then increments the incr slice
 // 		incr += a̅ * s
 func IncrScale(a []float32, s float32, incr []float32) {
-	a = a[:len(a)]
 	incr = incr[:len(a)]
 	for i, v := range a {
 		incr[i] += v * s
@@ -96,7 +89,6 @@ func IncrScaleInv(a []float32, s float32, incr []float32) {
 /// IncrScaleInvR divides all numbers in the slice by a scalar and then increments the incr slice
 // 		incr += s / a̅
 func IncrScaleInvR(a []float32, s float32, incr []float32) {
-	a = a[:len(a)]
 	incr = incr[:len(a)]
 	for i, v := range a {
 		incr[i] += s / v
@@ -106,7 +98,6 @@ func IncrScaleInvR(a []float32, s float32, incr []float32) {
 // IncrTrans adds all the values in the slice by a scalar and then increments the incr slice
 // 		incr += a̅ + s
 func IncrTrans(a []float32, s float32, incr []float32) {
-	a = a[:len(a)]
 	incr = incr[:len(a)]
 	for i, v := range a {
 		incr[i] += v + s
@@ -122,7 +113,6 @@ func IncrTransInv(a []float32, s float32, incr []float32) {
 // IncrTransInvR subtracts all the numbers in a slice from a scalar and then increments the incr slice
 //	 incr += s - a̅
 func IncrTransInvR(a []float32, s float32, incr []float32) {
-	a = a[:len(a)]
 	incr = incr[:len(a)]
 	for i, v := range a {
 		incr[i] += s - v
@@ -132,7 +122,6 @@ func IncrTransInvR(a []float32, s float32, incr []float32) {
 // IncrPowOf performs elementwise power function and then increments the incr slice
 //		incr += a̅ ^ s
 func IncrPowOf(a []float32, s float32, incr []float32) {
-	a = a[:len(a)]
 	incr = incr[:len(a)]
 	for i, v := range a {
 		incr[i] += math32.Pow(v, s)
@@ -142,7 +131,6 @@ func IncrPowOf(a []float32, s float32, incr []float32) {
 // PowOfR performs elementwise power function below and then increments the incr slice.
 //		incr += s ^ a̅
 func IncrPowOfR(a []float32, s float32, incr []float32) {
-	a = a[:len(a)]
 	incr = incr[:len(a)]
 	for i, v := range a {
 		incr[i] += math32.Pow(s, v)
