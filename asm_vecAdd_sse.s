@@ -3,17 +3,13 @@
 
 #include "textflag.h"
 
-// func Add(a, b []float32)
-TEXT ·Add(SB), NOSPLIT, $0
+// func addAsm(a, b []float32)
+TEXT ·addAsm(SB), NOSPLIT, $0
 	MOVQ a_data+0(FP), SI
 	MOVQ b_data+24(FP), DI // use destination index register for this
 
 	MOVQ a_len+8(FP), AX  // len(a) into AX
-	MOVQ b_len+32(FP), BX // len(b) into BX
-
-	// check if they're the same length
-	CMPQ AX, BX
-	JNE  panic  // jump to panic if not the same length. TOOD: return bloody errors
+	
 
 	// check if there are at least 16 elements
 	SUBQ $16, AX
@@ -68,8 +64,4 @@ remainderloop:
 	JNE  remainderloop
 
 done:
-	RET
-
-panic:
-	CALL runtime·panicindex(SB)
 	RET

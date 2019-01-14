@@ -3,17 +3,12 @@
 
 #include "textflag.h"
 
-// func Sub(a, b []float32)
-TEXT ·Sub(SB), NOSPLIT, $0
+// func subAsm(a, b []float32)
+TEXT ·subAsm(SB), NOSPLIT, $0
 	MOVQ a_data+0(FP), SI
 	MOVQ b_data+24(FP), DI // use destination index register for this
 
 	MOVQ a_len+8(FP), AX  // len(a) into AX - +8, because first 8 is pointer, second 8 is length, third 8 is cap
-	MOVQ b_len+32(FP), BX // len(b) into BX
-
-	// check if they're the same length
-	CMPQ AX, BX
-	JNE  panic  // jump to panic if not the same length. TOOD: return bloody errors
 
 	SUBQ $16, AX   // at least  16 elements?
 	JL   remainder
@@ -71,9 +66,5 @@ remainderloop:
 	JNE  remainderloop
 
 done:
-	RET
-
-panic:
-	CALL runtime·panicindex(SB)
 	RET
 
