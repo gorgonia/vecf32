@@ -22,6 +22,9 @@ go_import_path: gorgonia.org/vecf32
 before_install:
   - go get github.com/mattn/goveralls
 
+install:
+  - go get -u -v -t .
+
 script:
   - ./test.sh
 
