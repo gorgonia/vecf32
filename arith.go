@@ -2,8 +2,18 @@ package vecf32
 
 import "github.com/chewxy/math32"
 
+func AddRecv(a, b, c []float32) {
+	a = a[:]
+	b = b[:len(a)]
+	c = c[:len(a)]
+	for i, v := range a {
+		c[i] = v + b[i]
+	}
+}
+
 // Pow performs  elementwise
-//		a̅ ^ b̅
+//
+//	a̅ ^ b̅
 func Pow(a, b []float32) {
 	b = b[:len(a)]
 	for i, v := range a {
@@ -30,7 +40,8 @@ func Mod(a, b []float32) {
 }
 
 // Scale multiplies all values in the slice by the scalar. It performs elementwise
-// 		a̅ * s
+//
+//	a̅ * s
 func Scale(a []float32, s float32) {
 	for i, v := range a {
 		a[i] = v * s
@@ -38,13 +49,15 @@ func Scale(a []float32, s float32) {
 }
 
 // ScaleInv divides all values in the slice by the scalar. It performs elementwise
-// 		a̅ / s
+//
+//	a̅ / s
 func ScaleInv(a []float32, s float32) {
 	Scale(a, 1/s)
 }
 
-/// ScaleInvR divides all numbers in the slice by a scalar
-// 		s / a̅
+// / ScaleInvR divides all numbers in the slice by a scalar
+//
+//	s / a̅
 func ScaleInvR(a []float32, s float32) {
 	for i, v := range a {
 		a[i] = s / v
@@ -52,7 +65,8 @@ func ScaleInvR(a []float32, s float32) {
 }
 
 // Trans adds all the values in the slice by a scalar
-// 		a̅ + s
+//
+//	a̅ + s
 func Trans(a []float32, s float32) {
 	for i, v := range a {
 		a[i] = v + s
@@ -60,13 +74,15 @@ func Trans(a []float32, s float32) {
 }
 
 // TransInv subtracts all the values in the slice by a scalar
-//		a̅ - s
+//
+//	a̅ - s
 func TransInv(a []float32, s float32) {
 	Trans(a, -s)
 }
 
 // TransInvR subtracts all the numbers in a slice from a scalar
-//	 s - a̅
+//
+//	s - a̅
 func TransInvR(a []float32, s float32) {
 	for i, v := range a {
 		a[i] = s - v
@@ -74,7 +90,8 @@ func TransInvR(a []float32, s float32) {
 }
 
 // PowOf performs elementwise
-//		a̅ ^ s
+//
+//	a̅ ^ s
 func PowOf(a []float32, s float32) {
 	for i, v := range a {
 		a[i] = math32.Pow(v, s)
@@ -82,7 +99,8 @@ func PowOf(a []float32, s float32) {
 }
 
 // PowOfR performs elementwise
-//		s ^ a̅
+//
+//	s ^ a̅
 func PowOfR(a []float32, s float32) {
 	for i, v := range a {
 		a[i] = math32.Pow(s, v)
