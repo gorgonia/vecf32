@@ -115,11 +115,6 @@ func Min(a, b []float32) {
 
 /* REDUCTION RELATED */
 
-// Sum sums a slice of float32 and returns a float32
-func Sum(a []float32) float32 {
-	return Reduce(add, float32(0), a...)
-}
-
 // MaxOf finds the max of a []float32. it panics if the slice is empty
 func MaxOf(a []float32) (retVal float32) {
 	if len(a) < 1 {

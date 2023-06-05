@@ -54,3 +54,12 @@ func InvSqrt(a []float32) {
 		a[i] = float32(1) / math32.Sqrt(v)
 	}
 }
+
+// Sum sums a slice of float32 and returns a float32
+func Sum(a []float32) float32 {
+	var retVal float32
+	for _, v := range a {
+		retVal += v
+	}
+	return retVal
+}
