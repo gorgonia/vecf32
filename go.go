@@ -1,3 +1,4 @@
+//go:build !avx && !sse
 // +build !avx,!sse
 
 package vecf32
